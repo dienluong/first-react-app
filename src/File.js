@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default class File extends React.Component {
+/* export default class File extends React.Component {
   render() {
     return (
       <p>
@@ -10,4 +10,13 @@ export default class File extends React.Component {
       </p>
     );
   }
-}
+} */
+
+// Stateless functional component
+let File = (props) => (
+    <code>
+      Name: { props.file.name } Size: { props.file.size } Owner: { props.file.owner }
+    </code>
+);
+
+export default File;

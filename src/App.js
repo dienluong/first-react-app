@@ -3,27 +3,41 @@ import logo from './logo.svg';
 import './App.css';
 import File from './File';
 import AddFile from './AddFile';
+import { fetchFiles } from "./utils/filesApi";
+// import { fetchFilesXHR } from "./utils/filesApi";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      files: [
-        {
-          name: 'src/App1.js',
-          size: 12,
-          owner: 'Bob'
-        },
-        {
-          name: 'src/App2.js',
-          size: 140,
-          owner: 'Pete'
-        }
-      ]
+      dataLocation: 'files-data.json',
+      files: []
     };
     // bind this so that it can be called as 'this.addFile' from the onClick in <button>
     this.addFile = this.addFile.bind(this);
   }
+
+  componentDidMount() {
+    /* Using fetchFilesXHR() */
+    // let that = this;
+    // fetchFilesXHR(this.state.dataLocation, function processFetchedData() {
+    //   if (this.status === 200) {
+    //     let files = JSON.parse(this.responseText);
+    //     that.setState({
+    //       files: files
+    //     });
+    //   }
+    //   else {
+    //     console.log(`Error fetching data -- status ${this.status}`);
+    //   }
+    // });
+
+    fetchFiles(this.state.dataLocation)
+      .then(data => {
+        this.setState({ files: data });
+      });
+  }
+
 
   addFile(file) {
     this.setState({
