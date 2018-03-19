@@ -46,7 +46,8 @@ class App extends Component {
   }
 
   render() {
-    let files = this.state.files.map( (file, idx) => <li key={idx}><File file={file} /></li> );
+    console.log(`Rendering App...`);
+    let files = this.state.files.map( (file, idx) => <li style={{listStyleType: 'none'}} key={idx}><File file={file} /></li> );
     return (
       <div className="App">
         <header className="App-header">

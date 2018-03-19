@@ -12,11 +12,16 @@ import React from 'react';
   }
 } */
 
+let styles = {
+  border: 'solid',
+  color: 'grey',
+};
+
 // Stateless functional component
 let File = (props) => (
-    <code>
-      Name: { props.file.name } Size: { props.file.size } Owner: { props.file.owner }
-    </code>
+  <code style={styles}>
+    Name: { props.file.name } Size: { props.file.size } Owner: { props.file.owner }
+  </code>
 );
 
 export default File;
